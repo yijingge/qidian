@@ -1,4 +1,6 @@
 //改变state变量的方法
+import state from "./state";
+
 const mutations = {
   SET_TOKEN:(state,token)=>{
     state.token = token
@@ -6,6 +8,18 @@ const mutations = {
   SET_USERNAME:(state,username)=>{
     state.username = username
   },
+  //设置title改变的方法
+  SET_TITLE:(state,title)=>{
+    state.title = title
+  },
+  //设置改变tags的方法
+  SET_TAGS:(state,tags)=>{
+    state.tags = tags
+},
+  //设置改变content方法
+SET_CONTENT:(state,content)=>{
+    state.content = content
+},
   //设置当前正在编辑的文章，将它存放到vuex中...
   SET_CURRENT_ARTICLE:(state,{id,title,tags,content,isPublished})=>{
     state.id = id

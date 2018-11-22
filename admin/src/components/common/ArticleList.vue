@@ -23,7 +23,7 @@
     },
     //把全局的vuex里面的state和mutations放到计算属性中...
     computed:{
-      ...mapState(['id','title','tags','content','isPublished']),
+      ...mapState(['id','title','tags','content','isPublished','toggleDelete']),
     },
     //当该组件创建的时候自动执行里面的请求
     created(){
@@ -67,6 +67,42 @@
         this.SET_CURRENT_ARTICLE(this.articleList[index])
       },
       ...mapMutations(['SET_CURRENT_ARTICLE'])
+    },
+    //监听vuex数据的变化，如果发生变化，更新ARTICLElIST数据
+    watch:{
+      title(val){
+        if (this.articleList.length !== 0){
+          this.articleList[this.activeIndex].title = val
+        }
+  },
+      content(val){
+        if (this.articleList.length !== 0){
+          this.articleList[this.activeIndex].content = val
+        }
+      },
+      isPublished(val){
+        if (this.articleList.length !== 0){
+          this.articleList[this.activeIndex].isPublished = val
+        }
+      },
+      toggleDelete(val){
+        //如果这个值有变化，从false变为true,说明当前文章是需要删除的
+        this.articleList.splice(this.activeIndex,1)
+        if (this.activeIndex === this.articleList.length){
+          this.activeIndex --
+        }
+        if (this.articleList.length !== 0){
+          this.SET_CURRENT_ARTICLE(this.articleList[this.activeIndex])
+        } else {
+          this.SET_CURRENT_ARTICLE({
+            id:'',
+            title:'',
+            tags:'',
+            content:'',
+            isPublished:''
+          })
+        }
+      }
     }
   }
 </script>

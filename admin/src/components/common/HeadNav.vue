@@ -6,7 +6,7 @@
     <div class="content-container">
       <section>
         <h4 class="title">
-          李志远博客系统
+          赵静静博客系统
         </h4>
       </section>
       <a class="log-out" @click="logout">

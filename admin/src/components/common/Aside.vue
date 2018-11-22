@@ -1,6 +1,6 @@
 <template>
   <aside class="side-nav">
-    <router-link to="/lists" class="link">
+    <router-link to="/list" class="link">
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-liebiao"></use>
       </svg>
